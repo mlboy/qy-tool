@@ -113,7 +113,7 @@ do
         read -p "是否替换以上找到?（Y/n):" flag
         if [ "$flag" = "y" -o "$flag" = "Y" ] ; then
             echo2 "成功替换" "30;42"
-            echo $FilesStr | xargs sed -n -i "s/${data[0]}/${data[1]}/gp"
+            echo $FilesStr | xargs sed -n -i ""  "s/${data[0]}/${data[1]}/gp"
         else
             echo2 "跳过" "30;42"
         fi
