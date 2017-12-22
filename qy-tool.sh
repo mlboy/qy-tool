@@ -13,8 +13,10 @@ function echo2(){
     esac
 }
 if  [ ! -n "$1" ] ;then
-    echo2 "使用方法: ./qy-tool.sh 目录名";
-    echo2 "        sh ./qy-tool.sh 目录名";
+    echo2 "使用方法:";
+    echo2 "        sh ./qy-tool.sh 源目录";
+    echo2 "        源目录 要查找替换的代码目录";
+    echo2 "注意: 操作过程中 可能要对 源代码 目录中的文件进行替换操作，建议提前备份源代码，或者切换到新的分支 并且保证以可以读写权限的用户运行本脚本";
     exit 0
 fi
 ROOT_CODE=$1
@@ -26,19 +28,25 @@ DomainList="10.30.10.227    shop-monitor.haproxy.internal.chuchujie.com
 10.30.10.241    s5000.mysql.internal.chuchujie.com
 10.30.11.111    swoole-crontab.haproxy.internal.chuchujie.com
 10.30.11.175    m5000.mysql.internal.chuchujie.com
-10.30.11.198, 10.30.11.199, 10.30.8.205    shop-swoole.haproxy.internal.chuchujie.com
+10.30.11.198    shop-swoole.haproxy.internal.chuchujie.com
+10.30.11.199    shop-swoole.haproxy.internal.chuchujie.com
+10.30.8.205    shop-swoole.haproxy.internal.chuchujie.com
 10.30.11.7    s15388.redis.internal.chuchujie.com
 10.30.8.214    m15388.redis.internal.chuchujie.com
 10.30.27.28    shopjava-snswenda.haproxy.internal.chuchujie.com
 10.30.28.160    shop-service-monitor.haproxy.internal.chuchujie.com
 10.30.28.165    houyi-autooperate.haproxy.internal.chuchujie.com
 10.30.28.22    dwxk-monitor.haproxy.internal.chuchujie.com
-10.30.37.205, 10.30.37.225, 10.30.37.58    dwxk-swoole.haproxy.internal.chuchujie.com
+10.30.37.205    dwxk-swoole.haproxy.internal.chuchujie.com
+10.30.37.225    dwxk-swoole.haproxy.internal.chuchujie.com
+10.30.37.58    dwxk-swoole.haproxy.internal.chuchujie.com
 10.30.37.79    ants.chuchutong.com
-10.30.38.5, 10.30.38.6    shop-seller-swoole.haproxy.internal.chuchujie.com
+10.30.38.5    shop-seller-swoole.haproxy.internal.chuchujie.com
+10.30.38.6    shop-seller-swoole.haproxy.internal.chuchujie.com
 10.30.8.11    shop-auth.haproxy.internal.chuchujie.com
 10.30.8.253    shop-monitor-mongo.haproxy.internal.chuchujie.com
-10.30.8.86, 10.30.8.87    shop-stworker.haproxy.internal.chuchujie.com
+10.30.8.86    shop-stworker.haproxy.internal.chuchujie.com
+10.30.8.87    shop-stworker.haproxy.internal.chuchujie.com
 10.30.9.163    s5000.mysql.internal.chuchujie.com
 10.30.9.20    dwxk-monitor-mongo.haproxy.internal.chuchujie.com
 xb.chuchujie.com    ads-xb.haproxy.internal.chuchujie.com
