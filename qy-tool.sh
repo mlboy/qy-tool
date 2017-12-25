@@ -112,17 +112,25 @@ do
             echo2 "找到\033[0m ${p1} （${p2}行) : \033[36m${p3}" "32"
             rep=`sed -n -e "${p2} s#${data[0]}#${data[1]}#gp" ${p1}`
             if [ $? -eq 0 ]; then
-                echo2 "替换为\033[0m \033[35m${rep}" "31;33"
+                echo2 "替换为\033[0m \033[35m${rep}" "33"
                 read -p "是否替换以上找到?（Y/n):" flag
                 if [ "$flag" = "y" -o "$flag" = "Y" ] ; then
                     case `uname` in
                         Darwin)
                             sed -i "" "${p2} s#${data[0]}#${data[1]}#g" ${p1}
-                            echo2 "成功替换" "30;42"
+                            if [ $? -eq 0 ]; then
+                                echo2 "成功替换" "30;42"
+                            else
+                                echo2 "替换失败" "31;43"
+                            fi
                             ;;
                         Linux)
                             sed -i "${p2} s#${data[0]}#${data[1]}#g" ${p1}
-                            echo2 "成功替换" "30;42"
+                            if [ $? -eq 0 ]; then
+                                echo2 "成功替换" "30;42"
+                            else
+                                echo2 "替换失败" "31;43"
+                            fi
                             ;;
                     esac
                 else
