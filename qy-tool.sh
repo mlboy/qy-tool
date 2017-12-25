@@ -91,7 +91,7 @@ settlement.chuchujie.com    shop-settlement.haproxy.internal.chuchujie.com
 waiter.chuchutong.com    cct-waiter.haproxy.internal.chuchujie.com"
 DominListBlack="internal-message-1776641128.cn-north-1.elb.amazonaws.com.cn    shop-message-queadmin.haproxy.internal.chuchujie.com(queadmin:8080) shop-message-quemsg.haproxy.internal.chuchujie.com(quemsg:8082)
 "
-FilesStr=`find $ROOT_CODE -type f -name "*.*" ! -name "qy-tool.sh" -print | grep -v ".git/"`
+FilesStr=`find $ROOT_CODE -type f -name "*.*" ! -name "qy-tool.sh" -print | grep -v ".git/" |grep -v ".DS_Store"`
 process=0
 domainArray=${DomainList// /_}
 for line in  ${DomainList// /_}
@@ -104,22 +104,25 @@ do
     	next=0
         IFSO=$IFS
         IFS=$'\n';
-        for file in ${searchTmp//_/ }
+        for file in ${searchTmp}
         do
             p1=`echo $file | cut -d ":" -f 1`
             p2=`echo $file | cut -d ":" -f 2`
             p3=`echo $file | cut -d ":" -f 3-`
             echo2 "找到\033[0m ${p1} （${p2}行) : \033[36m${p3}" "32"
+            rep=`sed -n "${p2} s#${data[0]}#${data[1]}#gp" ${p1}`
+            if [ $? -eq 0 ]; then
+                echo2 "替换为\033[0m \033[35m${rep}" "31;33"
+                read -p "是否替换以上找到?（Y/n):" flag
+                if [ "$flag" = "y" -o "$flag" = "Y" ] ; then
+                    echo2 "成功替换" "30;42"
+                    sed -n -i "" "${p2} s#${data[0]}#${data[1]}#gp" ${p1}
+                else
+                    echo2 "跳过" "30;42"
+                fi
+            fi
         done
         IFS=$IFSO
-        echo2 "将 ${data[0]} 替换为 ${data[1]}" "31;33"
-        read -p "是否替换以上找到?（Y/n):" flag
-        if [ "$flag" = "y" -o "$flag" = "Y" ] ; then
-            echo2 "成功替换" "30;42"
-            echo $FilesStr | xargs sed -n -i ""  "s/${data[0]}/${data[1]}/gp"
-        else
-            echo2 "跳过" "30;42"
-        fi
     else
         echo2 "未找到" "33"
     fi
