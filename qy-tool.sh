@@ -92,7 +92,12 @@ waiter.chuchutong.com    cct-waiter.haproxy.internal.chuchujie.com"
 DominListBlack="internal-message-1776641128.cn-north-1.elb.amazonaws.com.cn    shop-message-queadmin.haproxy.internal.chuchujie.com(queadmin:8080) shop-message-quemsg.haproxy.internal.chuchujie.com(quemsg:8082)
 "
 FilesStr=`find $ROOT_CODE -type f -name "*.*" ! -name "qy-tool.sh" -print | grep -v ".git/" |grep -v ".DS_Store"`
+
 process=0
+cnt_find=0;
+cnt_replace_acc=0;
+cnt_skip=0;
+
 domainArray=${DomainList// /_}
 for line in  ${DomainList// /_}
 do
@@ -111,6 +116,7 @@ do
             p3=`echo $file | cut -d ":" -f 3-`
             echo2 "找到\033[0m ${p1} （${p2}行) : \033[36m${p3}" "32"
             rep=`sed -n -e "${p2} s#${data[0]}#${data[1]}#gp" ${p1}`
+            let cnt_find++
             if [ $? -eq 0 ]; then
                 echo2 "替换为\033[0m \033[35m${rep}" "33"
                 read -p "是否替换以上找到?（Y/n):" flag
@@ -120,6 +126,7 @@ do
                             sed -i "" "${p2} s#${data[0]}#${data[1]}#g" ${p1}
                             if [ $? -eq 0 ]; then
                                 echo2 "成功替换" "30;42"
+                                let cnt_replace_acc++
                             else
                                 echo2 "替换失败" "31;43"
                             fi
@@ -128,12 +135,14 @@ do
                             sed -i "${p2} s#${data[0]}#${data[1]}#g" ${p1}
                             if [ $? -eq 0 ]; then
                                 echo2 "成功替换" "30;42"
+                                let cnt_replace_acc++
                             else
                                 echo2 "替换失败" "31;43"
                             fi
                             ;;
                     esac
                 else
+                    let cnt_skip++
                     echo2 "跳过" "30;42"
                 fi
             fi
@@ -143,4 +152,7 @@ do
         echo2 "未找到" "33"
     fi
 done
-echo2 "功夫不负有心人终于完成了，快去喝点水压压惊"
+echo "============================================"
+echo2 "功夫不负有心人终于完成了，快去喝点水压压惊" "31"
+echo2 "共找到${cnt_find}处 成功替换:${cnt_replace_acc}处 跳过:${cnt_skip}处"
+echo2 "快去喝点水压压惊"
