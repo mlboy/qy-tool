@@ -92,19 +92,18 @@ waiter.chuchutong.com    cct-waiter.haproxy.internal.chuchujie.com"
 DominListBlack="internal-message-1776641128.cn-north-1.elb.amazonaws.com.cn    shop-message-queadmin.haproxy.internal.chuchujie.com(queadmin:8080) shop-message-quemsg.haproxy.internal.chuchujie.com(quemsg:8082)
 "
 FilesStr=`find $ROOT_CODE -type f -name "*.*" ! -name "qy-tool.sh" -print | grep -v ".git/"`
-echo $FilesStr
-exit;
 process=0
 domainArray=${DomainList// /_}
 for line in  ${DomainList// /_}
 do
     let process++
     data=(${line//_/ })
-    echo2 "grep -i ${data[0]} -rn $FilesStr"
     searchTmp=`grep -i ${data[0]} -rn $FilesStr`
     echo2 "${process} 查找:${data[0]}" "30;41"
     if [ -n "$searchTmp" ]; then
     	next=0
+        IFSO=$IFS
+        IFS=$'\n';
         for file in ${searchTmp//_/ }
         do
             p1=`echo $file | cut -d ":" -f 1`
@@ -112,6 +111,7 @@ do
             p3=`echo $file | cut -d ":" -f 3-`
             echo2 "找到\033[0m ${p1} （${p2}行) : \033[36m${p3}" "32"
         done
+        IFS=$IFSO
         echo2 "将 ${data[0]} 替换为 ${data[1]}" "31;33"
         read -p "是否替换以上找到?（Y/n):" flag
         if [ "$flag" = "y" -o "$flag" = "Y" ] ; then
