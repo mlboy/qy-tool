@@ -115,8 +115,8 @@ do
             p2=`echo $file | cut -d ":" -f 2`
             p3=`echo $file | cut -d ":" -f 3-`
             echo2 "找到\033[0m ${p1} （${p2}行) : \033[36m${p3}" "32"
-            rep=`sed -n -e "${p2} s#${data[0]}#${data[1]}#gp" ${p1}`
             let cnt_find++
+            rep=`sed -n -e "${p2} s#${data[0]}#${data[1]}#gp" ${p1}`
             if [ $? -eq 0 ]; then
                 echo2 "替换为\033[0m \033[35m${rep}" "33"
                 read -p "是否替换以上找到?（Y/n):" flag
@@ -145,6 +145,8 @@ do
                     let cnt_skip++
                     echo2 "跳过" "30;42"
                 fi
+            else
+                echo2 "失败的规则" "31;43"
             fi
         done
         IFS=$IFSO
@@ -155,4 +157,4 @@ done
 echo "============================================"
 echo2 "功夫不负有心人终于完成了，快去喝点水压压惊" "31"
 echo2 "共找到${cnt_find}处 成功替换:${cnt_replace_acc}处 跳过:${cnt_skip}处"
-echo2 "快去喝点水压压惊"
+echo "============================================"
