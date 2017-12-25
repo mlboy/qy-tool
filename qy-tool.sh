@@ -91,7 +91,9 @@ settlement.chuchujie.com    shop-settlement.haproxy.internal.chuchujie.com
 waiter.chuchutong.com    cct-waiter.haproxy.internal.chuchujie.com"
 DominListBlack="internal-message-1776641128.cn-north-1.elb.amazonaws.com.cn    shop-message-queadmin.haproxy.internal.chuchujie.com(queadmin:8080) shop-message-quemsg.haproxy.internal.chuchujie.com(quemsg:8082)
 "
-FilesStr=`find $ROOT_CODE -type f -name "*.*" ! -name "qy-tool.sh"  ! -path ".git/"-print`
+FilesStr=`find $ROOT_CODE -type f -name "*.*" ! -name "qy-tool.sh" -print | grep -v ".git/"`
+echo $FilesStr
+exit;
 process=0
 domainArray=${DomainList// /_}
 for line in  ${DomainList// /_}
