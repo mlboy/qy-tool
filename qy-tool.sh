@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 function echo2(){
     if  [ ! -n "$2" ] ;then
         color="0"
