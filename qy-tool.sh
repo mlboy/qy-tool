@@ -1,15 +1,15 @@
 #!/bin/bash
 function echo2(){
     if  [ ! -n "$2" ] ;then
-        color="0"
+        ecolor="30;0"
     else
-        color=$2
+        ecolor=$2
     fi
     case `uname` in
         Darwin)
-            echo "\033[$2m$1\033[0m";;
+            echo -e "\033[${ecolor}m$1\033[0m";;
         Linux)
-            echo -e "\033[$2m$1\033[0m";;
+            echo -e "\033[$ecolorm$1\033[0m";;
     esac
 }
 if  [ ! -n "$1" ] ;then
