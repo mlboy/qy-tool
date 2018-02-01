@@ -92,18 +92,18 @@ parter.chuchujie.com    shop-parter.haproxy.internal.chuchujie.com
 que-wechat.chuchujie.com    dwxk-que-wechat-service.haproxy.internal.chuchujie.com
 settlement.chuchujie.com    shop-settlement.haproxy.internal.chuchujie.com
 waiter.chuchutong.com    cct-waiter.haproxy.internal.chuchujie.com
-10.30.31.220	m11218-03.mc.internal.chuchujie.com
-10.30.31.221	m11218-01.mc.internal.chuchujie.com
-10.30.31.222	m11218-02.mc.internal.chuchujie.com
-10.30.31.241	m11233-01.mc.internal.chuchujie.com
-10.30.31.29	m11216-02.mc.internal.chuchujie.com
-10.30.31.72	m11239-01.mc.internal.chuchujie.com
-10.30.31.80	m11220-01.mc.internal.chuchujie.com
-10.30.31.936	m11216-01.mc.internal.chuchujie.com
-10.30.11.105	m11217-01.mc.internal.chuchujie.com
-dp-orders.wapzv2.0001.cnn1.cache.amazonaws.com.cn	m11217-01.mc.internal.chuchujie.com
-10.30.10.151 m11221-01.mc.internal.chuchujie.com
-shangcheng-mem.wapzv2.0001.cnn1.cache.amazonaws.com.cn m11221-01.mc.internal.chuchujie.com"
+10.30.31.220    m11218-03.mc.internal.chuchujie.com
+10.30.31.221    m11218-01.mc.internal.chuchujie.com
+10.30.31.222    m11218-02.mc.internal.chuchujie.com
+10.30.31.241    m11233-01.mc.internal.chuchujie.com
+10.30.31.29    m11216-02.mc.internal.chuchujie.com
+10.30.31.72    m11239-01.mc.internal.chuchujie.com
+10.30.31.80    m11220-01.mc.internal.chuchujie.com
+10.30.31.936    m11216-01.mc.internal.chuchujie.com
+10.30.11.105    m11217-01.mc.internal.chuchujie.com
+dp-orders.wapzv2.0001.cnn1.cache.amazonaws.com.cn    m11217-01.mc.internal.chuchujie.com
+10.30.10.151    m11221-01.mc.internal.chuchujie.com
+shangcheng-mem.wapzv2.0001.cnn1.cache.amazonaws.com.cn    m11221-01.mc.internal.chuchujie.com"
 DominListBlack="internal-message-1776641128.cn-north-1.elb.amazonaws.com.cn shop-message-queadmin.haproxy.internal.chuchujie.com(queadmin:8080)与shop-message-quemsg.haproxy.internal.chuchujie.com(quemsg:8082)"
 FilesStr=`find $ROOT_CODE -type f -name "*.*" ! -name "qy-tool.sh" -print | grep -v ".git/" |grep -v ".DS_Store"`
 process=0
