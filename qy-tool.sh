@@ -9,10 +9,9 @@ function echo2(){
         Darwin)
             echo -e "\033[${ecolor}m$1\033[0m";;
         Linux)
-   	    echo -e "\033[$ecolorm$1\033[0m";;
+			echo -e "\033[${ecolor}m$1\033[0m";;
     	MINGW64_NT-6.1)
-	    #echo "$1";;
-		echo -e "\033[$ecolorm$1\033[0m";;
+			echo -e "\033[${ecolor}m$1\033[0m";;
     esac
 }
 if  [ ! -n "$1" ] ;then
