@@ -98,7 +98,7 @@ waiter.chuchutong.com    cct-waiter.haproxy.internal.chuchujie.com
 10.30.31.29    m11216-02.mc.internal.chuchujie.com
 10.30.31.72    m11239-01.mc.internal.chuchujie.com
 10.30.31.80    m11220-01.mc.internal.chuchujie.com
-10.30.31.936    m11216-01.mc.internal.chuchujie.com
+10.30.31.93    m11216-01.mc.internal.chuchujie.com
 10.30.11.105    m11217-01.mc.internal.chuchujie.com
 dp-orders.wapzv2.0001.cnn1.cache.amazonaws.com.cn    m11217-01.mc.internal.chuchujie.com
 10.30.10.151    m11221-01.mc.internal.chuchujie.com
