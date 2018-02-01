@@ -163,7 +163,7 @@ do
                                 echo2 "替换失败" "31;43"
                             fi
                             ;;
-                        MINGW32_NT-6.1）
+                        MINGW32_NT-6.1)
                             sed -i "${p2} s#${data[0]}#${data[1]}#g" ${p1}
                             if [ $? -eq 0 ]; then
                                 echo2 "成功替换" "30;42"
