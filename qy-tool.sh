@@ -106,7 +106,7 @@ dp-orders.wapzv2.0001.cnn1.cache.amazonaws.com.cn    m11217-01.mc.internal.chuch
 10.30.10.151    m11221-01.mc.internal.chuchujie.com
 shangcheng-mem.wapzv2.0001.cnn1.cache.amazonaws.com.cn    m11221-01.mc.internal.chuchujie.com"
 DominListBlack="internal-message-1776641128.cn-north-1.elb.amazonaws.com.cn shop-message-queadmin.haproxy.internal.chuchujie.com(queadmin:8080)与shop-message-quemsg.haproxy.internal.chuchujie.com(quemsg:8082)"
-FilesStr=`find $ROOT_CODE -type f -name "*.*" ! -name "qy-tool.sh" -print | grep -v ".git/" |grep -v ".DS_Store"`
+FilesStr=`find $ROOT_CODE -type f -name "*.*" ! -name "qy-tool.sh" -print | grep -v ".git/" |grep -v ".DS_Store" |grep -v ".jpg" |grep -v ".jpeg"|grep -v ".gif"`
 process=0
 cnt_find=0;
 cnt_replace_acc=0;
