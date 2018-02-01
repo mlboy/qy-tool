@@ -12,8 +12,8 @@ function echo2(){
 			echo -e "\033[${ecolor}m$1\033[0m";;
     	MINGW64_NT-6.1)
 			echo -e "\033[${ecolor}m$1\033[0m";;
-		MINGW32_NT-6.1
-			echo -e "\033[${ecolor}m$1\033[0m";;
+        MINGW32_NT-6.1)
+            echo -e "\033[${ecolor}m$1\033[0m";;
     esac
 }
 if  [ ! -n "$1" ] ;then
