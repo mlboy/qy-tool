@@ -12,6 +12,8 @@ function echo2(){
 			echo -e "\033[${ecolor}m$1\033[0m";;
     	MINGW64_NT-6.1)
 			echo -e "\033[${ecolor}m$1\033[0m";;
+		MINGW32_NT-6.1
+			echo -e "\033[${ecolor}m$1\033[0m";;
     esac
 }
 if  [ ! -n "$1" ] ;then
@@ -154,6 +156,15 @@ do
                             ;;
 						MINGW64_NT-6.1)
 							sed -i "${p2} s#${data[0]}#${data[1]}#g" ${p1}
+                            if [ $? -eq 0 ]; then
+                                echo2 "成功替换" "30;42"
+                                let cnt_replace_acc++
+                            else
+                                echo2 "替换失败" "31;43"
+                            fi
+                            ;;
+                        MINGW32_NT-6.1）
+                            sed -i "${p2} s#${data[0]}#${data[1]}#g" ${p1}
                             if [ $? -eq 0 ]; then
                                 echo2 "成功替换" "30;42"
                                 let cnt_replace_acc++
